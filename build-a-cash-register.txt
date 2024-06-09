@@ -1,0 +1,151 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cash Register</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <input id = "cash"></input>
+    </div>
+    <div id = "change-due"></div>
+    <button id= "purchase-btn">purchase</button>
+    <script src = "./script.js"></script>
+  </body>
+ 
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+const cashes = document.getElementById("cash");
+const balance = document.getElementById("change-due");
+const purchase = document.getElementById("purchase-btn");
+
+let price = 19.5;
+
+let cid = [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]
+
+let pid = {
+  "PENNY": 0.01,
+  "NICKEL": 0.05,
+  "DIME":  0.1,
+  "QUARTER": 0.25,
+  "ONE": 1,
+  "FIVE": 5,
+  "TEN": 10,
+  "TWENTY": 20,
+  "ONE HUNDRED": 100
+};
+
+
+let collective = [];
+
+purchase.addEventListener("click", () =>{
+  
+let cash = cashes.value;
+  let prica = price;
+  let bal = (cash - prica);
+
+let iterator = cid.reduce((sum, element) => sum + element[1],0).toFixed(1);
+
+
+
+  if(cash < price){
+    alert("Customer does not have enough money to purchase the item")
+  }
+  if(cash == price){
+    return balance.innerHTML = "No change due - customer paid with exact cash"
+  }
+  
+
+  if(cash > price && iterator > bal){
+    for(let i = (cid.length - 1); i >= 0; i --){
+        let cashUnitName = cid[i][0];
+        let cashUnitValue = cid[i][1];
+        let currencyUnitValue = pid[cashUnitName];
+        let cashUnitAmount = Number((cashUnitValue / currencyUnitValue).toFixed(0));
+        let currencyUnitsChange = 0;
+        
+        while(bal >= currencyUnitValue && cashUnitAmount > 0){
+          bal -= currencyUnitValue
+          bal = bal.toFixed(2);
+          cashUnitAmount--
+          currencyUnitsChange++
+        }
+
+        if(currencyUnitsChange > 0){
+          collective.push(cashUnitName + ": " + "$" + currencyUnitsChange * currencyUnitValue)
+        }
+   
+}
+
+}     if(bal > iterator){
+          return balance.innerHTML = "Status: INSUFFICIENT_FUNDS" 
+      
+        
+
+
+/* When balance = money in register*/
+
+  }if(bal > 0 && bal != iterator){
+     return balance.innerHTML = "Status: INSUFFICIENT_FUNDS"
+  }
+  else if(bal == iterator){
+for(let i = (cid.length - 1); i >= 0; i --){
+        let cashUnitName = cid[i][0];
+        let cashUnitValue = cid[i][1];
+        let currencyUnitValue = pid[cashUnitName];
+        let cashUnitAmount = Number((cashUnitValue / currencyUnitValue).toFixed(0));
+        let currencyUnitsChange = 0;
+        
+        while(bal >= currencyUnitValue && cashUnitAmount > 0){
+          bal -= currencyUnitValue
+          bal = bal.toFixed(2);
+          cashUnitAmount--
+          currencyUnitsChange++
+        }
+
+        if(currencyUnitsChange > 0){
+          collective.push(cashUnitName + ": " + "$" + currencyUnitsChange * currencyUnitValue)
+        }
+        
+        
+      console.log (collective)  
+}
+
+    return balance.innerHTML = "Status: Closed " + collective;
+  }
+  
+ 
+
+  return balance.innerHTML = "Status: OPEN " + collective + " :: " + iterator;      
+  
+});
+
+ 
+
+
+
+
+/*if(iterator < bal){
+    return balance.innerHTML = "Status: INSUFFICIENT_FUNDS";
+  }
+  if(bal == iterator){
+    return balance.innerHTML = "Status: CLOSED " + collective
+  }*/
+
+** end of undefined **
+

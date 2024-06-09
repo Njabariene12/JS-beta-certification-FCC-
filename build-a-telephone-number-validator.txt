@@ -1,0 +1,64 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number validator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <input id="user-input"></input>
+    </div>
+    <button id="check-btn">Check</button>
+    <button id="clear-btn">Clear</button>
+    <div id="results-div"></div>
+
+    <script src = "./script.js"></script>
+  </body>
+</html>
+
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+const input = document.getElementById("user-input");
+const check = document.getElementById("check-btn");
+const clear = document.getElementById("clear-btn");
+const results = document.getElementById("results-div")
+
+check.addEventListener("click", () => {
+  const num = input.value;
+
+  if(num.length == 0){
+  return results.innerHTML = alert("Please provide a phone number");}
+
+  const regex = /^(1\s?)?(\d{3}|\(\d{3}\))[\-\s]?\d{3}[\-\s]?\d{4}$/;
+
+  const valida = (tel) => regex.test(tel)
+  results.textContent = valida(num)?
+  "Valid US number: " + num :
+  "Invalid US number: " + num 
+})
+
+clear.addEventListener("click", () => {
+  const num = input.value; 
+  return results.innerHTML = "";
+})
+
+
+
+** end of undefined **
+

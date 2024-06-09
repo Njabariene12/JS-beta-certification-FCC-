@@ -1,0 +1,59 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Calorie Counter</title>
+  </head>
+<body>
+  <div class="stuff">
+  <input id="text-input" type="text"></input>
+  <button id="check-btn">check</button>
+</div>
+
+<div id="result"></div>
+<script src = "./script.js"></script>
+</body>
+
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+const input = document.getElementById("text-input");
+const result = document.getElementById("result");
+const check = document.getElementById("check-btn");
+
+
+  check.addEventListener("click", () => {
+    const word = input.value;
+    if(word.length == 0){
+      return result.innerHTML = alert("Please input a value")
+    }
+    const regex = /[_\W]/g;
+    const cleanIt = word.replace(regex, "").toLowerCase();
+    const palin = cleanIt.trim("").split("").reverse("").join("");
+    const isaPalindrome = (palin == cleanIt);
+    const message = isaPalindrome? word + " is a palindrome" : word +" is not a palindrome"
+    result.innerHTML =  message;
+
+  });
+s
+    
+  
+
+
+
+** end of undefined **
+
